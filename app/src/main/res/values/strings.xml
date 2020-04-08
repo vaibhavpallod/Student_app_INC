@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Judging app INC</string>
+
+    <string name="navigation_darwer_open">Open navigation drawer</string>
+    <string name="navigation_darwer_close">Close navigation drawer</string>
+    <string-array name="StudentIDs">
+        <item>Sign in as</item>
+        <item>Login As STUDENT</item>
+        <item>Login As JUDGE</item>
+    </string-array>
+
+
+</resources>
