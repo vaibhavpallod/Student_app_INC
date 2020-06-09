@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         Firebase.setAndroidContext(this);
 
-        FirebaseApp.getInstance();
+        firebaseApp = FirebaseApp.getInstance();
         mAuth =FirebaseAuth.getInstance();
 
 
@@ -141,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Fields are empty", Toast.LENGTH_LONG).show();
 
         } else {
+           final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
             mRef=new Firebase("https://master-app-inc.firebaseio.com/");
 
@@ -150,32 +151,54 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
 
-                        mRef.child("check").addChildEventListener(new com.firebase.client.ChildEventListener() {
+                        mDatabase.child("check").addChildEventListener(new ChildEventListener() {
                             @Override
-                            public void onChildAdded(com.firebase.client.DataSnapshot dataSnapshot, String s) {
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                                 if (dataSnapshot.getValue().toString().equals(mEmailField.getText().toString())) {
                                     judgeid = dataSnapshot.getKey();
                                     error = false;
+
+                                    if (judgeid != null) {
+                                        Toast.makeText(LoginActivity.this, String.valueOf(judgeid), Toast.LENGTH_SHORT).show();
+                                        sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
+                                        editor = sharedPreferences.edit();
+                                        editor.putInt("check", 1);
+                                        editor.putString("Value", judgeid);
+                                        editor.apply();
+                                        Firebase mRefchild = mRef.child("judgeid").child(judgeid);
+
+                                   /* String token = task.getResult().getToken();
+
+                                    mRefchild.child("Token").setValue(token);
+*/
+                                        mRefchild.child("ID").setValue(judgeid);
+
+
+                                        Intent intent = new Intent(getApplicationContext(), JudgeActivity.class);
+                                        startActivity(intent);
+
+
+                                    }
                                 }
                             }
 
                             @Override
-                            public void onChildChanged(com.firebase.client.DataSnapshot dataSnapshot, String s) {
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                             }
 
                             @Override
-                            public void onChildRemoved(com.firebase.client.DataSnapshot dataSnapshot) {
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
                             }
 
                             @Override
-                            public void onChildMoved(com.firebase.client.DataSnapshot dataSnapshot, String s) {
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                             }
 
                             @Override
-                            public void onCancelled(FirebaseError firebaseError) {
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
                             }
                         });
@@ -233,27 +256,6 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
 */
-                        if (judgeid != null) {
-
-                            sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
-                            editor = sharedPreferences.edit();
-                            editor.putInt("check", 1);
-                            editor.putString("Value", judgeid);
-                            editor.apply();
-                            Firebase mRefchild = mRef.child("judgeid").child(judgeid);
-
-                                   /* String token = task.getResult().getToken();
-
-                                    mRefchild.child("Token").setValue(token);
-*/
-                            mRefchild.child("ID").setValue(judgeid);
-
-
-                            Intent intent = new Intent(getApplicationContext(), JudgeActivity.class);
-                            startActivity(intent);
-
-
-                        }
                     }
 
                 }

@@ -39,6 +39,7 @@ import com.firebase.client.ValueEventListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -121,18 +122,21 @@ public class JudgeActivity extends AppCompatActivity implements OnNavigationItem
         result = getSharedPreferences("SaveData", MODE_PRIVATE);
         final String value = result.getString("Value", "Data not Found");
 
-        Firebase navrefname = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
-        Firebase navrefemail = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
+        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        navrefname.addListenerForSingleValueEvent(new ValueEventListener() {
+//        Firebase navrefname = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
+//        Firebase navrefemail = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
+
+        mDatabase.child("judgeid").child(value).addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-               nameheader.setText(dataSnapshot.child("name").getValue().toString());
-               emailheader.setText(dataSnapshot.child("email").getValue().toString());
+            public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
+                Toast.makeText(JudgeActivity.this,dataSnapshot.child("name").getValue().toString(), Toast.LENGTH_SHORT).show();
+                nameheader.setText(dataSnapshot.child("name").getValue().toString());
+                emailheader.setText(dataSnapshot.child("email").getValue().toString());
             }
 
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
