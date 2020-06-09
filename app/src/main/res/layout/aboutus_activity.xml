@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".Aboutus"
+    android:background="@drawable/loginback"
+    >
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#00000000"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="9dp"
+
+            >
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="About Us"
+
+    android:textSize="28dp"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+    android:textColor="@color/black"
+    />
+        <TextView
+    android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textColor="@color/black"
+            android:text="Impetus and Concepts (InC) is a flagship technical event of Pune Institute of Computer Technology (PICT), Pune, which is going to be held online from 13th to 16th of June 2020. InC is an intercollegiate
+International level competition which has been catching the attention of corporate
+giants for Quality of projects and an opportunity to recruit/mentor young talented
+budding entrepreneurs. Every year InC sets a New Benchmark and provides an opportunity
+to students to realize their ideas into effective product. Over the years, it has become
+most popular &amp; awaited event with continuous improvement in Footfall, Number and
+Quality of projects/papers, etc. This event also sets a platform for students to design,
+exhibit and watch their ideas come true. This technical fest has Inventive events namely
+- Concepts, Pradnya, Pratibha, Naipunya, Tantra, Lakshya, Daksha and Yukti. InC announces a
+total cash prize of ₹8 Lakhs and a special prize of ₹1 Lakh for Project related to Healthcare (InC 2020 Theme)."
+
+
+            />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

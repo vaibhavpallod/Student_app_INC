@@ -5,43 +5,116 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/judge_drawer_layout"
-    android:fitsSystemWindows="true"
     tools:context=".JudgeActivity"
     tools:openDrawer="start"
+    android:fitsSystemWindows="true"
     >
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:background="#F0F8FF"
+    >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tool"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/Theme.AppCompat.Light"
-        app:title="Hello World" />
+        android:background="#6dd5fa"
+        android:title="Hello Vaibhav"
+        android:id="@+id/toolb"
+
+        android:elevation="4dp"/>
 
 
-<FrameLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+<!--
+    <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fragment_container"/>
+-->
 
 
 </LinearLayout>
 <com.google.android.material.navigation.NavigationView
-    android:id="@+id/nav_view"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    app:headerLayout="@layout/navigation_bar"
+    android:id="@+id/nav_view"
     app:menu="@menu/drawer_menu"
     android:layout_gravity="start"
-    android:fitsSystemWindows="true"
-    />
+    android:background="@drawable/gradient_toolbar"
+    android:fitsSystemWindows="false"
+    >
+<!--
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:layout_marginBottom="30dp"
+
+    >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cardview_dark_background"
+
+        />
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Developed By"
+        android:textSize="16dp"
+        android:textColor="@color/cardview_dark_background"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="18dp"
+        android:text="Vaibhav Pallod"
+        android:textColor="@color/black"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:layout_marginTop="5dp"
+        >
+
+        <ImageView
+            android:layout_marginRight="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/linkdinicon"
+            />
+        <ImageView
+            android:layout_marginRight="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/gitlogo"
+            />
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+-->
+
+</com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

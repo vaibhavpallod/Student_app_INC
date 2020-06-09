@@ -14,11 +14,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.SoundPool;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,21 +37,28 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
-public class JudgeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class JudgeActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 
     public static int i;
     private long backPressedTime;
-    private FirebaseDatabase database;
-    private Firebase mRef1, mRef2, mRef3, lablocationreference, evaluatedreference;
-    private DatabaseReference databaseReference;
+    private Firebase disablereference, mRef3, titlereference, evaluatedreference;
+
+    private RecyclerViewReadyCallback recyclerViewReadyCallback;
+
+    public String namejudge,emailjudge;
 
     public String Notification;
     private static final String CHANNEL_ID = "INC";
@@ -58,20 +71,25 @@ public class JudgeActivity extends AppCompatActivity implements NavigationView.O
     public static final String TEXT = "text";
     public static final String SWITCH1 = "switch1";
 
-    public String id, labloc;
+    public String id;
 
     SharedPreferences result;
     SharedPreferences.Editor editor;
     Button addmark;
 
-    public RecyclerView recyclerView;
-    //  JudgecustomListAdapter judgecustomListAdapter;
-    List<JudgeIDreturn> studentlist;
+    RecyclerView recyclerView;
+    ArrayList disable = new ArrayList();
+    public List<JudgeIDreturn> studentlist;
     JudgecustomListAdapter myadapter;
 
     public Toolbar mtoolbar;
     public DrawerLayout drawer;
     public ActionBarDrawerToggle toggle;
+
+    public SharedPreferences sharedPreferences;
+    Firebase mRef;
+
+    public   String judgeid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,43 +98,135 @@ public class JudgeActivity extends AppCompatActivity implements NavigationView.O
         Firebase.setAndroidContext(this);
         addmark = (Button) findViewById(R.id.addmarkbtn);
 
-
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        recyclerView.setNestedScrollingEnabled(true);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         mtoolbar = findViewById(R.id.toolb);
         setSupportActionBar(mtoolbar);
-
+        studentlist = new ArrayList<>();
 
         drawer = findViewById(R.id.judge_drawer_layout);
         toggle = new ActionBarDrawerToggle(JudgeActivity.this, drawer, mtoolbar, R.string.navigation_darwer_open, R.string.navigation_darwer_close);
         toggle.setDrawerIndicatorEnabled(true);
+
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View view = navigationView.inflateHeaderView(R.layout.navigation_bar);
+        final TextView nameheader,emailheader;
+        nameheader = view.findViewById(R.id.judgenameheader);
+        emailheader = view.findViewById(R.id.judgeemailheader);
 
-        if(savedInstanceState==null)
-        {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    )
-        }
-
-        studentlist = new ArrayList<>();
         final JudgecustomListAdapter myadapter = new JudgecustomListAdapter(JudgeActivity.this, studentlist);
 
         result = getSharedPreferences("SaveData", MODE_PRIVATE);
         final String value = result.getString("Value", "Data not Found");
 
-        mRef1 = new Firebase("https://master-app-inc.firebaseio.com/");
-        database = FirebaseDatabase.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        Firebase navrefname = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
+        Firebase navrefemail = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
+
+        navrefname.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               nameheader.setText(dataSnapshot.child("name").getValue().toString());
+               emailheader.setText(dataSnapshot.child("email").getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        disablereference = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setNestedScrollingEnabled(true);
+        recyclerView.setHasFixedSize(true);
+           // recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setLayoutManager(new LinearLayoutManager(this) {
+                @Override
+                public void onLayoutCompleted(final RecyclerView.State state) {
+                    super.onLayoutCompleted(state);
+                    if (getIntent().getIntExtra("success", 500) != 500 ) {
+                        int x = getIntent().getIntExtra("success", 500);
+
+                        disablereference.child("disable").child(String.valueOf(x)).setValue(x);
+                        disablereference.child("disable").addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setEnabled(false);
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setClickable(false);
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setEnabled(false);
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setClickable(false);
 
 
-        mRef3 = new Firebase("https://master-app-inc.firebaseio.com/JudgeID/" + value + "/StudentIDalloted");
+
+                            }
+
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+
+                            }
+                        });
+
+
+                    }
+                    else {
+
+                        disablereference.child("disable").addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setEnabled(false);
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setClickable(false);
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setEnabled(false);
+                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setClickable(false);
+
+                            }
+
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+
+                            }
+                        });
+
+                    }
+
+                }
+            });
+
+        mRef3 = new Firebase("https://master-app-inc.firebaseio.com/judgeid/" + value + "/StudentIDalloted");
         mRef3.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(final DataSnapshot dataSnapshot1, String s) {
@@ -125,16 +235,18 @@ public class JudgeActivity extends AppCompatActivity implements NavigationView.O
                     studentlist.add(new JudgeIDreturn("ID "+ i +" :"+ dataSnapshot.getValue().toString()));
                     adapter.notifyDataSetChanged();
     */
+
+
                 id = dataSnapshot1.getValue().toString();
-                lablocationreference = new Firebase("https://master-app-inc.firebaseio.com/StudentID/" + id + "/Lablocation");
-                lablocationreference.addValueEventListener(new ValueEventListener() {
+                titlereference = new Firebase("https://master-app-inc.firebaseio.com/studentdata/" + id + "/Title");
+                titlereference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        Toast.makeText(getApplicationContext(), dataSnapshot.getValue().toString(), Toast.LENGTH_LONG).show();
+              //        Toast.makeText(getApplicationContext(), dataSnapshot.getValue().toString(), Toast.LENGTH_LONG).show();
                         id = dataSnapshot1.getValue().toString();
-                        labloc = dataSnapshot.getValue().toString();
+                        String projecttitle = dataSnapshot.getValue().toString();
 
-                        studentlist.add(new JudgeIDreturn(id, labloc));
+                        studentlist.add(new JudgeIDreturn(id, projecttitle));
                         myadapter.notifyDataSetChanged();
                         recyclerView.setAdapter(myadapter);
                     }
@@ -173,57 +285,30 @@ public class JudgeActivity extends AppCompatActivity implements NavigationView.O
         });
 
 
+
         myadapter.setOnItemClickListner(new JudgecustomListAdapter.OnItemClickListner() {
             @Override
             public void onaddmarkClick(int position) {
-                String id;
-                /*   final JudgeIDreturn studentIDposition = studentlist.get(position);
-                   id= studentIDposition.getStudentID();*/
-                evaluatedreference = new Firebase("https://master-app-inc.firebaseio.com/JudgeID/" + value + "/evaluated");
-                evaluatedreference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        int i = Integer.parseInt(dataSnapshot.getValue().toString());
-                        i++;
-                        evaluatedreference.setValue(i);
-
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-
-                    }
-
-
-                });
-
+/*
+                if(!(recyclerView.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.addmarkbtn).isEnabled()))
+                    toast("Double evaluation not allowed");*/
 
             }
 
             public void onabsentbtnClick(int position) {
-                String id;
+                Firebase mRef1= new Firebase("https://master-app-inc.firebaseio.com/result/");
+                Calculate calculate;
 
-                new AlertDialog.Builder(JudgeActivity.this).setTitle("Are you sure ?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+              /*  String id;
+                new AlertDialog.Builder(JudgeActivity.this).setTitle("zero makrs will be assigned ").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        evaluatedreference = new Firebase("https://master-app-inc.firebaseio.com/JudgeID/" + value + "/evaluated");
-                        evaluatedreference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                int i = Integer.parseInt(dataSnapshot.getValue().toString());
-                                i++;
-                                evaluatedreference.setValue(i);
-
-                            }
-
-                            @Override
-                            public void onCancelled(FirebaseError firebaseError) {
-
-                            }
-                        });
+                    public void onClick(DialogInterface dialog, int which) {
+                        toast("absent button clicked");
                     }
                 }).setNegativeButton("No", null).show();
 
+*/
 
             }
 
@@ -256,6 +341,10 @@ public class JudgeActivity extends AppCompatActivity implements NavigationView.O
 
 
     }
+
+
+
+
 
 
 
@@ -320,21 +409,46 @@ public class JudgeActivity extends AppCompatActivity implements NavigationView.O
 
 
     }
+    public void toast(String x)
+    {
+        Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
+    }
 
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId())
-        {
-            case R.id.runtimeaddproject:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Add_dynamic_project()).commit();
+        switch (item.getItemId()) {
+            case R.id.visitwebsiteid:
+                Uri uri = Uri.parse("http://pictinc.org/"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
                 break;
+
+            case  R.id.about:
+                Intent intent1 = new Intent(getApplicationContext(),Aboutus.class);
+                startActivity(intent1);
+                break;
+
+            case R.id.sponsor:
+                Intent intent2 = new Intent(getApplicationContext(),Sponsor.class);
+                startActivity(intent2);
+                break;
+
+
+
 
 
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
     }
+
+    public interface RecyclerViewReadyCallback {
+        void onLayoutReady();
+    }
+
+
+
 }

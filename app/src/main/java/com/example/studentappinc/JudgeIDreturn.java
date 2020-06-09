@@ -2,10 +2,10 @@ package com.example.studentappinc;
 
 public class JudgeIDreturn {
 
-    String studentID,lablocation;
+    String studentID,projecttitle;
 
     public JudgeIDreturn(String id, String labloc) {
-    this.lablocation=labloc;
+    this.projecttitle=labloc;
     this.studentID=id;
     }
 
@@ -13,7 +13,7 @@ public class JudgeIDreturn {
         return studentID;
     }
 
-    public String getLablocation() {
-        return lablocation;
+    public String getProjecttitle() {
+        return projecttitle;
     }
 }

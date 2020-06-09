@@ -2,24 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="176dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/navheader"
     android:padding="16dp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark"
-android:background="@color/colorPrimary"
     >
 
     <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/ic_inclogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/inc_nav"
+
         />
 
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:paddingTop="10dp"
-       android:textSize="15dp"
-
+       android:textSize="16dp"
+        android:id="@+id/judgenameheader"
        android:text="Vaibhav Pallod"
        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
 
@@ -27,7 +26,8 @@ android:background="@color/colorPrimary"
 
     <TextView
         android:layout_width="wrap_content"
-        android:textSize="15dp"
+        android:textSize="16dp"
+        android:id="@+id/judgeemailheader"
         android:layout_height="wrap_content"
         android:text="vaibhavpallod@gmail.com"/>
 
