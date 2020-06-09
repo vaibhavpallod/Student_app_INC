@@ -1,6 +1,7 @@
 package com.example.studentappinc;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -231,63 +232,91 @@ public class JudgeActivity extends AppCompatActivity implements OnNavigationItem
             });
 
         mRef3 = new Firebase("https://master-app-inc.firebaseio.com/judgeid/" + value + "/StudentIDalloted");
-        mRef3.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(final DataSnapshot dataSnapshot1, String s) {
-                //Toast.makeText(StudentActivity.this,dataSnapshot.getValue().toString() + " child added",Toast.LENGTH_SHORT).show();
-               /*     i++;
-                    studentlist.add(new JudgeIDreturn("ID "+ i +" :"+ dataSnapshot.getValue().toString()));
-                    adapter.notifyDataSetChanged();
-    */
+      mDatabase.child("judgeid").child(value).child("StudentIDalloted")
+              .addChildEventListener(new com.google.firebase.database.ChildEventListener() {
+                  @Override
+                  public void onChildAdded(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
+                      id = dataSnapshot.getValue().toString();
+//                      titlereference = new Firebase("https://master-app-inc.firebaseio.com/studentdata/" + id + "/Title");
+                      DatabaseReference titlereference = mDatabase.child("studentdata").child(id).child("/Title");
+                      titlereference.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+                          @Override
+                          public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
 
+                              id = dataSnapshot.getValue().toString();
+                              String projecttitle = dataSnapshot.getValue().toString();
 
-                id = dataSnapshot1.getValue().toString();
-                titlereference = new Firebase("https://master-app-inc.firebaseio.com/studentdata/" + id + "/Title");
-                titlereference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-              //        Toast.makeText(getApplicationContext(), dataSnapshot.getValue().toString(), Toast.LENGTH_LONG).show();
-                        id = dataSnapshot1.getValue().toString();
-                        String projecttitle = dataSnapshot.getValue().toString();
+                              studentlist.add(new JudgeIDreturn(id, projecttitle));
+                              myadapter.notifyDataSetChanged();
+                              recyclerView.setAdapter(myadapter);
+                          }
 
-                        studentlist.add(new JudgeIDreturn(id, projecttitle));
-                        myadapter.notifyDataSetChanged();
-                        recyclerView.setAdapter(myadapter);
-                    }
+                          @Override
+                          public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
+                          }
+                      });
+                  }
 
-                    }
-                });
+                  @Override
+                  public void onChildChanged(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
 
-                // Toast.makeText(getApplicationContext(),labloc,Toast.LENGTH_LONG).show();
+                  }
 
-            }
+                  @Override
+                  public void onChildRemoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                  }
 
-            }
+                  @Override
+                  public void onChildMoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
 
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                  }
 
-            }
+                  @Override
+                  public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-
-
-        });
-
+                  }
+              });
+//        mRef3.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(final DataSnapshot dataSnapshot1, String s) {
+//                //Toast.makeText(StudentActivity.this,dataSnapshot.getValue().toString() + " child added",Toast.LENGTH_SHORT).show();
+//               /*     i++;
+//                    studentlist.add(new JudgeIDreturn("ID "+ i +" :"+ dataSnapshot.getValue().toString()));
+//                    adapter.notifyDataSetChanged();
+//    */
+//
+//
+//
+//
+//                // Toast.makeText(getApplicationContext(),labloc,Toast.LENGTH_LONG).show();
+//
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError firebaseError) {
+//
+//            }
+//
+//
+//        });
+//
 
 
         myadapter.setOnItemClickListner(new JudgecustomListAdapter.OnItemClickListner() {
