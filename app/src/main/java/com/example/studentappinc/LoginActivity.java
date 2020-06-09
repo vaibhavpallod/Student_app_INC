@@ -46,21 +46,22 @@ public class LoginActivity extends AppCompatActivity {
     public FirebaseAuth mAuth;
     Firebase firebase;
 
-    FirebaseAuth.AuthStateListener mAuthListener;
+//    public FirebaseAuth.AuthStateListener mAuthListener;
 
+    Firebase mRef;
 
     public boolean error = true;
-FirebaseApp firebaseApp;
+    FirebaseApp firebaseApp;
+    public FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         Firebase.setAndroidContext(this);
-// Initialize the default app
-     //   FirebaseApp defaultApp = FirebaseApp.initializeApp(getApplicationContext());
 
+        FirebaseApp.getInstance();
         mAuth =FirebaseAuth.getInstance();
-
 
 
         mEmailField = (EditText) findViewById(R.id.emailField);
@@ -69,60 +70,11 @@ FirebaseApp firebaseApp;
         Button loginbutton;
         loginbutton = findViewById(R.id.loginBtn);
         mAuthListener = new FirebaseAuth.AuthStateListener() {
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
                 if (firebaseAuth.getCurrentUser() != null) {
 
                     if (firebaseAuth.getCurrentUser() != null) {
-/*
-                        mRef = new Firebase("https://master-app-inc.firebaseio.com/");
-                        mRef.child("check").addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                                if (dataSnapshot.getValue().toString().equals(mEmailField.getText().toString())) {
-                                    judgeid = dataSnapshot.getKey();
-                                    error = false;
-
-                                }
-                            }
-
-                            @Override
-                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                            }
-
-                            @Override
-                            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                            }
-
-                            @Override
-                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                            }
-
-                            @Override
-                            public void onCancelled(FirebaseError firebaseError) {
-
-                            }
-                        });
-
-                        sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
-                        editor = sharedPreferences.edit();
-                        editor.putInt("check", 1);
-                        editor.putString("Value", judgeid);
-                        editor.apply();
-                        Firebase mRefchild = mRef.child("judgeid").child(judgeid);
-*/
-/*                        String token = task.getResult().getToken();
-                        mRefchild.child("Token").setValue(token);*//*
-
-                        mRefchild.child("ID").setValue(judgeid);
-
-*/
 
                         //  startActivity(new Intent(LoginActivity.this,JudgeActivity.class));
 
@@ -190,7 +142,7 @@ FirebaseApp firebaseApp;
 
         } else {
 
-            //new Firebase("https://master-app-inc.firebaseio.com/");
+            mRef=new Firebase("https://master-app-inc.firebaseio.com/");
 
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -198,13 +150,40 @@ FirebaseApp firebaseApp;
 
                     if (task.isSuccessful()) {
 
-                        mRef.getReference().child("check").addChildEventListener(new ChildEventListener() {
+                        mRef.child("check").addChildEventListener(new com.firebase.client.ChildEventListener() {
                             @Override
-                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            public void onChildAdded(com.firebase.client.DataSnapshot dataSnapshot, String s) {
                                 if (dataSnapshot.getValue().toString().equals(mEmailField.getText().toString())) {
                                     judgeid = dataSnapshot.getKey();
                                     error = false;
                                 }
+                            }
+
+                            @Override
+                            public void onChildChanged(com.firebase.client.DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(com.firebase.client.DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(com.firebase.client.DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+
+                            }
+                        });
+
+                       /* mRef.child("check").addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                             }
 
                             @Override
@@ -226,7 +205,7 @@ FirebaseApp firebaseApp;
                             public void onCancelled(@NonNull DatabaseError databaseError) {
 
                             }
-                        });
+                        });*/
                         /*.addChildEventListener(new com.firebase.client.ChildEventListener() {
                             @Override
                             public void onChildAdded(com.firebase.client.DataSnapshot dataSnapshot, String s) {
@@ -261,7 +240,7 @@ FirebaseApp firebaseApp;
                             editor.putInt("check", 1);
                             editor.putString("Value", judgeid);
                             editor.apply();
-                            DatabaseReference mRefchild = firebaseDatabase.getReference().child("judgeid").child(judgeid);
+                            Firebase mRefchild = mRef.child("judgeid").child(judgeid);
 
                                    /* String token = task.getResult().getToken();
 
@@ -299,3 +278,50 @@ FirebaseApp firebaseApp;
 
     }
 }
+/*
+                        mRef = new Firebase("https://master-app-inc.firebaseio.com/");
+                        mRef.child("check").addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                                if (dataSnapshot.getValue().toString().equals(mEmailField.getText().toString())) {
+                                    judgeid = dataSnapshot.getKey();
+                                    error = false;
+
+                                }
+                            }
+
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+
+                            }
+                        });
+
+                        sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
+                        editor = sharedPreferences.edit();
+                        editor.putInt("check", 1);
+                        editor.putString("Value", judgeid);
+                        editor.apply();
+                        Firebase mRefchild = mRef.child("judgeid").child(judgeid);
+*/
+/*                        String token = task.getResult().getToken();
+                        mRefchild.child("Token").setValue(token);*//*
+
+                        mRefchild.child("ID").setValue(judgeid);
+
+*/
