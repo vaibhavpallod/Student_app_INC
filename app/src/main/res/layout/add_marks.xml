@@ -6,309 +6,425 @@
     android:padding="20dp"
 
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/edittext_stylewithboeder"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp">
 
-        >
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:text="ID"
-            android:paddingStart="10dp"
-            />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/projectidaddmark"
-            android:textSize="22dp"
-            android:textColor="@color/black"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="ID"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/projectidaddmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
 
 
-            />
-    </LinearLayout>
+                />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-        <TextView
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="@color/black"
-            android:text="Project"
-            android:paddingStart="10dp"
-            />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="Project"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
 
-        <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/projectnameaddmark"
-        android:textSize="22dp"
-        android:textColor="@color/black"
+            <TextView
+                android:id="@+id/projectnameaddmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
 
-
-        />
+                />
+        </LinearLayout>
     </LinearLayout>
 
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:stretchColumns="1"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-        >
-<TableRow>
-    <TextView
-        android:text="Max Marks"
-        android:layout_column="2"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-</TableRow>
-        <TableRow
-            android:paddingTop="10dp">
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:stretchColumns="1"
 
-            <TextView
-                android:background="@drawable/tableborder"
+                >
 
-                android:layout_height="40dp"
-                android:layout_column="0"
+                <TableRow>
 
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Innovative Idea’s Involved"
-                android:textColor="@color/black"
+                    <TextView
+                        android:layout_column="2"
+                        android:text="Max Marks" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Originality, Creativity, Clarity, and Innovation in Project"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext1"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_height="match_parent"
+
+                        android:layout_column="2"
+                        android:width="40dp"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(20)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:width="250dp"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Patent/ Product readiness from Project"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_height="match_parent"
+
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Relevance to Society"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Ability to Execute projects as a Startups/Startup Enrollment"
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/edittext4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Testing/ Demonstration"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Impact and Applications"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(20)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:width="150dp"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Presentation And Q &amp; A"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(20)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Total of Individual Staff"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/totaladdmarks"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(100)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                </TableRow>
+            </TableLayout>
+
+
+            <Button
+                android:id="@+id/savebtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/basilgreendark"
+                android:text="SAVE"
+                android:textColor="@color/white"
                 android:textSize="18dp" />
-
-            <EditText
-                android:id="@+id/edittext1"
-                android:background="@drawable/tableborder"
-                android:inputType="number"
-                android:maxLines="1"
-                android:layout_column="1"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="3dp" />
-
-            <TextView
-                android:background="@drawable/tableborder"
-
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:width="40dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="(20) "
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-        </TableRow>
-
-        <TableRow android:paddingTop="10dp">
-
-            <TextView
-                android:background="@drawable/tableborder2"
-
-                android:layout_height="40dp"
-                android:layout_column="0"
-                android:width="250dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Approach To Exploit Ideas"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <EditText
-                android:id="@+id/edittext2"
-                android:inputType="number"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/tableborder2"
-                android:gravity="center"
-                android:padding="3dp" />
-
-            <TextView
-                android:background="@drawable/tableborder2"
-
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:width="40dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="(20) "
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-        </TableRow>
-
-        <TableRow android:paddingTop="10dp">
-
-            <TextView
-                android:background="@drawable/tableborder"
-
-                android:layout_height="80dp"
-                android:layout_column="0"
-                android:width="150dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Approach Towards Implementing The System And Future Applications"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-            <EditText
-                android:id="@+id/edittext3"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:background="@drawable/tableborder"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="3dp" />
-            <TextView
-                android:background="@drawable/tableborder"
-
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:width="40dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="(20)"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-        </TableRow>
-
-        <TableRow android:paddingTop="10dp">
-
-            <TextView
-                android:layout_height="60dp"
-                android:layout_column="0"
-                android:width="150dp"
-
-                android:gravity="center"
-                android:background="@drawable/tableborder2"
-                android:padding="3dp"
-                android:text="Implementation Of Engineering Principles"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <EditText
-                android:id="@+id/edittext4"
-                android:inputType="number"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="@drawable/tableborder2"
-                android:padding="3dp" />
-            <TextView
-                android:background="@drawable/tableborder2"
-
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:width="40dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="(20) "
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-        </TableRow>
-
-        <TableRow android:paddingTop="10dp">
-
-
-            <TextView
-                android:background="@drawable/tableborder"
-
-                android:layout_height="40dp"
-                android:layout_column="0"
-                android:width="150dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Presentation And Q &amp; A"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <EditText
-                android:id="@+id/edittext5"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="@drawable/tableborder"
-                android:inputType="number"
-                android:padding="3dp" />
-            <TextView
-                android:background="@drawable/tableborder"
-
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:width="40dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="(20) "
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-        </TableRow>
-
-        <TableRow android:paddingTop="10dp">
-
-            <TextView
-                android:layout_height="40dp"
-                android:background="@drawable/tableborder2"
-                android:layout_column="0"
-                android:width="150dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Total of Individual Staff"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/totaladdmarks"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/tableborder2"
-                android:gravity="center"
-                android:padding="3dp"
-                android:inputType="number"
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-
-            <TextView
-                android:background="@drawable/tableborder2"
-
-                android:layout_height="match_parent"
-                android:layout_column="2"
-                android:width="40dp"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="(20) "
-                android:textColor="@color/black"
-                android:textSize="18dp" />
-        </TableRow>
-    </TableLayout>
-
-
-    <Button
-        android:id="@+id/savebtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:textColor="@color/white"
-        android:text="SAVE"
-        android:background="@drawable/rounded_button"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/basilgreendark"
-        />
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

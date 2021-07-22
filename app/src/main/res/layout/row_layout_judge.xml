@@ -48,7 +48,7 @@
                 <TextView
                     android:id="@+id/textviewrowID"
                     android:layout_width="120dp"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:textColor="@color/black"
@@ -143,19 +143,6 @@
                     android:textStyle="bold"
                     android:textSize="16dp"
                     android:textColor="@color/red" />
-<!--
-
-                <Button
-                    android:id="@+id/notintrested"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="5dp"
-                    android:background="#09F3D7"
-                    android:text="not intrested"
-                    android:textColor="#020101" />
--->
 
                 <Button
                     style="@style/Widget.AppCompat.Button.Borderless"
@@ -172,6 +159,31 @@
                     android:textColor="@color/green" />
 
             </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/marksubmittedlayout"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:padding="5dp"
+                    android:textColor="#C31E1E"
+                    android:text="Marks Submitted"
+                    android:gravity="center"
+                    android:outlineAmbientShadowColor="@color/black"
+                    android:outlineSpotShadowColor="@color/purple"
+                    android:shadowColor="@color/black"
+                    android:backgroundTintMode="multiply"
+
+                />
+
+            </LinearLayout>
+
         </LinearLayout>
 </LinearLayout>
 

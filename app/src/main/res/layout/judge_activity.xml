@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/judge_drawer_layout"
-    tools:context=".JudgeActivity"
+    tools:context="v.s.p.j"
     tools:openDrawer="start"
     android:fitsSystemWindows="true"
     >
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:background="#6dd5fa"
         android:title="Hello Vaibhav"
-        android:id="@+id/toolb"
+        android:id="@+id/toolbar"
 
         android:elevation="4dp"/>
 

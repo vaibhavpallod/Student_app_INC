@@ -13,15 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity android:name=".Aboutus"/>
-        <activity android:name=".Sponsor"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+        <activity android:name="v.s.p.instruction"></activity>
+        <activity android:name="v.s.p.Feedback_form" />
+        <activity android:name="v.s.p.ContactUs" />
+        <activity android:name="v.s.p.ReportBug" />
         <activity
-            android:name=".SplashScreen"
+            android:name="v.s.p.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="v.s.p.Aboutus" />
+        <activity android:name="v.s.p.Sponsor" />
+        <activity
+            android:name="v.s.p.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,18 +32,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Add_marks"
-            android:parentActivityName=".JudgeActivity">
+            android:name="v.s.p.Add_marks"
+            android:parentActivityName="v.s.p.j">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".JudgeActivity" />
+                android:value="v.s.p.j" />
         </activity> <!-- <activity android:name=".Add_dynamic_project" /> -->
         <activity
-            android:name=".JudgeActivity"
+            android:name="v.s.p.j"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".Aboutus"
+
+    tools:context="v.s.p.Aboutus"
     android:background="@drawable/loginback"
     >
 
@@ -15,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="20dp"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="5dp"
         app:cardBackgroundColor="#00000000"
         >
         <LinearLayout
@@ -35,6 +36,12 @@
     android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
     android:textColor="@color/black"
     />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                >
+
         <TextView
     android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -51,9 +58,9 @@ Quality of projects/papers, etc. This event also sets a platform for students to
 exhibit and watch their ideas come true. This technical fest has Inventive events namely
 - Concepts, Pradnya, Pratibha, Naipunya, Tantra, Lakshya, Daksha and Yukti. InC announces a
 total cash prize of ₹8 Lakhs and a special prize of ₹1 Lakh for Project related to Healthcare (InC 2020 Theme)."
-
-
             />
+            </ScrollView>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
