@@ -1,4 +1,4 @@
-package v.s.p;
+package v.s.p.Adapters;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -31,6 +31,9 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+import v.s.p.Add_marks;
+import v.s.p.ConnectionDetector;
+import v.s.p.Classes.JudgeIDreturn;
 
 import static android.content.Context.MODE_PRIVATE;
 

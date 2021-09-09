@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_contactus"
     android:scrollbars="vertical"
-    tools:context="v.s.p.ReportBug">
+    tools:context="v.s.p.navigation.ReportBug">
 
 
     <LinearLayout

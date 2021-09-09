@@ -1,6 +1,7 @@
-package v.s.p;
+package v.s.p.navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import v.s.p.j;
 
 import android.content.Intent;
 import android.graphics.Color;

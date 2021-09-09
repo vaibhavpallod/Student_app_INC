@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="v.s.p.Add_dynamic_project">
+    android:orientation="vertical"
+    android:padding="20dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    >
+
+    <GridView
+        android:columnWidth="150dp"
+        android:gravity="center"
+        android:id="@+id/gridView"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:numColumns="2"
+        android:verticalSpacing="15dp"
+        android:stretchMode="spacingWidthUniform">
+
+    </GridView>
+
+</LinearLayout>

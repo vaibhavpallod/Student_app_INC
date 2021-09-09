@@ -1,4 +1,4 @@
-package v.s.p;
+package v.s.p.navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 

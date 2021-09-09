@@ -1,17 +1,5 @@
 package v.s.p;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -20,8 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +24,26 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import v.s.p.Adapters.JudgecustomListAdapter;
+import v.s.p.Classes.JudgeIDreturn;
+import v.s.p.navigation.Aboutus;
+import v.s.p.navigation.ContactUs;
+import v.s.p.navigation.Feedback_form;
+import v.s.p.navigation.ReportBug;
+import v.s.p.navigation.Sponsor;
+import v.s.p.navigation.all_project.Add_dynamic_project;
+
 
 public class j extends AppCompatActivity implements OnNavigationItemSelectedListener {
 
@@ -46,7 +52,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
 
     private RecyclerViewReadyCallback recyclerViewReadyCallback;
 
-    public String namejudge,emailjudge;
+    public String namejudge, emailjudge;
 
     public String Notification;
     private static final String CHANNEL_ID = "INC";
@@ -77,7 +83,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
     public SharedPreferences sharedPreferences;
     Firebase mRef;
 
-    public   String judgeid;
+    public String judgeid;
     private DatabaseReference disablereference;
 
     @Override
@@ -87,8 +93,8 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         Firebase.setAndroidContext(this);
         addmark = (Button) findViewById(R.id.addmarkbtn);
 
-            mtoolbar = findViewById(R.id.toolb);
-            setSupportActionBar(mtoolbar);
+        mtoolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mtoolbar);
         studentlist = new ArrayList<>();
 
         drawer = findViewById(R.id.judge_drawer_layout);
@@ -101,7 +107,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.inflateHeaderView(R.layout.navigation_bar);
-        final TextView nameheader,emailheader;
+        final TextView nameheader, emailheader;
         nameheader = view.findViewById(R.id.judgenameheader);
         emailheader = view.findViewById(R.id.judgeemailheader);
 
@@ -113,14 +119,13 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-
 //        Firebase navrefname = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
 //        Firebase navrefemail = new Firebase("https://master-app-inc.firebaseio.com/judgeid/"+value);
 
         mDatabase.child("judgeid").child(value).addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-               // Toast.makeText(j.this,dataSnapshot.child("name").getValue().toString(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(j.this,dataSnapshot.child("name").getValue().toString(), Toast.LENGTH_SHORT).show();
                 nameheader.setText(dataSnapshot.child("name").getValue().toString());
                 emailheader.setText(dataSnapshot.child("email").getValue().toString());
             }
@@ -132,42 +137,20 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         });
 
         mDatabase.child("judgeid").child(value).child("StudentIDalloted").addChildEventListener(new com.google.firebase.database.ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull final com.google.firebase.database.DataSnapshot dataSnapshot1, @Nullable String s) {
+                id = dataSnapshot1.getValue().toString();
+                DatabaseReference titlereference = mDatabase.child("studentdata").child(id).child("Title");
+                titlereference.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull final com.google.firebase.database.DataSnapshot dataSnapshot1, @Nullable String s) {
+                    public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
+
                         id = dataSnapshot1.getValue().toString();
-                        DatabaseReference titlereference = mDatabase.child("studentdata").child(id).child("Title");
-                        titlereference.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
+                        String projecttitle = dataSnapshot.getValue().toString();
 
-                                id = dataSnapshot1.getValue().toString();
-                                String projecttitle = dataSnapshot.getValue().toString();
-
-                                studentlist.add(new JudgeIDreturn(id, projecttitle));
-                                myadapter.notifyDataSetChanged();
-                                recyclerView.setAdapter(myadapter);
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
+                        studentlist.add(new JudgeIDreturn(id, projecttitle));
+                        myadapter.notifyDataSetChanged();
+                        recyclerView.setAdapter(myadapter);
                     }
 
                     @Override
@@ -175,6 +158,28 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
 
                     }
                 });
+            }
+
+            @Override
+            public void onChildChanged(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         disablereference = FirebaseDatabase.getInstance().getReference().child("judgeid").child(value);
 
@@ -183,192 +188,6 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         recyclerView.setNestedScrollingEnabled(true);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-/*
-
-        int resId = R.anim.fadeloadadapterleft;
-        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getApplicationContext(), resId);
-        recyclerView.setLayoutAnimation(animation);
-*/
-
-
-
-/*
-            recyclerView.setLayoutManager(new LinearLayoutManager(this) {
-                @Override
-                public void onLayoutCompleted(final RecyclerView.State state) {
-                    super.onLayoutCompleted(state);
-                    if (getIntent().getIntExtra("success", 500) != 500 ) {
-                        int x = getIntent().getIntExtra("success", 500);
-
-                        disablereference.child("disable").child(String.valueOf(x)).setValue(x);
-                        */
-/*disablereference.child("disable").addChildEventListener(new com.google.firebase.database.ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setEnabled(false);
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setClickable(false);
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setEnabled(false);
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setClickable(false);
-
-
-                            }
-
-                            @Override
-                            public void onChildChanged(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onChildRemoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-                            }
-
-                            @Override
-                            public void onChildMoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-*//*
-
-                    }
-*/
-/*
-                    else {
-
-
-                        disablereference.child("disable").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                    for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
-                                        int position = Integer.valueOf(dataSnapshot1.getValue().toString());
-                                        recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot1.getValue().toString()));
-                                        recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot1.getValue().toString()));
-//                                        recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot1.getValue().toString())).itemView.findViewById(R.id.absentbtn).setClickable(false);
-                                      //  recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot1.getValue().toString())).itemView.findViewById(R.id.absentbtn).setEnabled(false);
-
-                                        *//*
-
-*/
-/*RecyclerView.ViewHolder rvview = recyclerView.findViewHolderForAdapterPosition(position);
-                                        Button add = rvview.itemView.findViewById(R.id.absentbtn);
-                                        add.setClickable(false);
-                                        add.setEnabled(false);*//*
-*/
-/*
-
-
-
-                                    }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-                        *//*
-
-*/
-/*.addChildEventListener(new com.google.firebase.database.ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-                               *//*
-*/
-/*
-*//*
-
-*/
-/* recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setEnabled(false);
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.addmarkbtn).setClickable(false);
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setEnabled(false);
-                                recyclerView.findViewHolderForAdapterPosition(Integer.valueOf(dataSnapshot.getValue().toString())).itemView.findViewById(R.id.absentbtn).setClickable(false);
-*//*
-*/
-/*
-*//*
-
-*/
-/*
-                               toast(Integer.valueOf(dataSnapshot.getValue().toString())+ " d");
-                            }
-
-                            @Override
-                            public void onChildChanged(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onChildRemoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-                            }
-
-                            @Override
-                            public void onChildMoved(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });*//*
-*/
-/*
-
-                    }
-*//*
-
-
-                }
-            });
-*/
-
-//        mRef3.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(final DataSnapshot dataSnapshot1, String s) {
-//                //Toast.makeText(StudentActivity.this,dataSnapshot.getValue().toString() + " child added",Toast.LENGTH_SHORT).show();
-//               /*     i++;
-//                    studentlist.add(new JudgeIDreturn("ID "+ i +" :"+ dataSnapshot.getValue().toString()));
-//                    adapter.notifyDataSetChanged();
-//    */
-//
-//
-//
-//
-//                // Toast.makeText(getApplicationContext(),labloc,Toast.LENGTH_LONG).show();
-//
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//
-//
-//        });
-//
 
 
         myadapter.setOnItemClickListner(new JudgecustomListAdapter.OnItemClickListner() {
@@ -397,13 +216,11 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
             }
 
 
-
         });
 
 
-
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -429,7 +246,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
             finish();
         }
 
-        if(item.getItemId() == R.id.instruction){
+        if (item.getItemId() == R.id.instruction) {
 
             Intent intent = new Intent(this, instruction.class);
             startActivity(intent);
@@ -443,7 +260,6 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         android.app.Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_inclogo)
                 .setContentTitle(Notification).setContentText("He will arrive in some time ").setPriority(NotificationCompat.PRIORITY_HIGH).build();
-
 
 
         notificationManager.notify(1, notification);
@@ -469,9 +285,9 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
 
 
     }
-    public void toast(String x)
-    {
-        Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
+
+    public void toast(String x) {
+        Toast.makeText(getApplicationContext(), x, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -479,35 +295,41 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
+
+            case R.id.allprojects:
+                Intent intent0 = new Intent(getApplicationContext(), Add_dynamic_project.class);
+                startActivity(intent0);
+                break;
+
+
             case R.id.visitwebsiteid:
                 Uri uri = Uri.parse("http://pictinc.org/"); // missing 'http://' will cause crashed
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
                 break;
 
-            case  R.id.about:
-                Intent intent1 = new Intent(getApplicationContext(),Aboutus.class);
+            case R.id.about:
+                Intent intent1 = new Intent(getApplicationContext(), Aboutus.class);
                 startActivity(intent1);
                 break;
 
             case R.id.sponsor:
-                Intent intent2 = new Intent(getApplicationContext(),Sponsor.class);
+                Intent intent2 = new Intent(getApplicationContext(), Sponsor.class);
                 startActivity(intent2);
                 break;
 
-            case R.id.contactud :
-                Intent intent3 = new Intent(getApplicationContext(),ContactUs.class);
+            case R.id.contactud:
+                Intent intent3 = new Intent(getApplicationContext(), ContactUs.class);
                 startActivity(intent3);
                 break;
-            case R.id.reportbugid :
-                Intent intent5 = new Intent(getApplicationContext(),ReportBug.class);
+            case R.id.reportbugid:
+                Intent intent5 = new Intent(getApplicationContext(), ReportBug.class);
                 startActivity(intent5);
                 break;
 
 
-
             case R.id.feedbacknav:
-                Intent intent4 = new Intent(getApplicationContext(),Feedback_form.class);
+                Intent intent4 = new Intent(getApplicationContext(), Feedback_form.class);
                 startActivity(intent4);
                 break;
 
@@ -527,7 +349,6 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
     public interface RecyclerViewReadyCallback {
         void onLayoutReady();
     }
-
 
 
 }

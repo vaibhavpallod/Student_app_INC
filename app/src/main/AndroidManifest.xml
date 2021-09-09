@@ -14,14 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name="v.s.p.instruction"></activity>
-        <activity android:name="v.s.p.Feedback_form" />
-        <activity android:name="v.s.p.ContactUs" />
-        <activity android:name="v.s.p.ReportBug" />
+        <activity android:name="v.s.p.navigation.Feedback_form" />
+        <activity android:name="v.s.p.navigation.ContactUs" />
+        <activity android:name="v.s.p.navigation.ReportBug" />
+        <activity android:name="v.s.p.navigation.all_project.Projects"/>
+        <activity android:name="v.s.p.navigation.all_project.Add_dynamic_project"/>
         <activity
             android:name="v.s.p.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="v.s.p.Aboutus" />
-        <activity android:name="v.s.p.Sponsor" />
+        <activity android:name="v.s.p.navigation.Aboutus" />
+        <activity android:name="v.s.p.navigation.Sponsor" />
         <activity
             android:name="v.s.p.SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">

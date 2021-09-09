@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-<group
-    android:id="@+id/vcb">
+    <group android:id="@+id/vcb">
+
+        <item
+            android:id="@+id/allprojects"
+            android:icon="@drawable/ic_open_in_browser_black_24dp"
+            android:title="All Projects" />
+
         <item
             android:id="@+id/visitwebsiteid"
             android:icon="@drawable/ic_open_in_browser_black_24dp"
@@ -13,32 +18,29 @@
         <item
             android:id="@+id/sponsor"
             android:icon="@drawable/ic_msponsor_on_black_24dp"
-            android:title="Sponsors"
-            />
+            android:title="Sponsors" />
 
 
         <item
             android:id="@+id/about"
             android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="About"
-/>
+            android:title="About" />
 
-</group>
-<group
-    android:id="@+id/onnn"
-    android:checkableBehavior="single">
-     <item
+    </group>
+    <group
+        android:id="@+id/onnn"
+        android:checkableBehavior="single">
+        <item
             android:id="@+id/contactud"
             android:icon="@drawable/ic_contact_us_black_24dp"
-            android:title="Contact Us"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/reportbugid"
+            android:icon="@drawable/ic_baseline_bug_report_24"
+            android:title="Report a Bug"
+
             />
-
-    <item
-        android:id="@+id/reportbugid"
-        android:icon="@drawable/ic_baseline_bug_report_24"
-        android:title="Report a Bug"
-
-        />
 
 
         <item
@@ -50,8 +52,7 @@
         <item
             android:id="@+id/rateplay"
             android:icon="@drawable/ic_baseline_rateplaystore_star_24"
-            android:title="Rate us"
-            />
+            android:title="Rate us" />
 
-</group>
+    </group>
 </menu>

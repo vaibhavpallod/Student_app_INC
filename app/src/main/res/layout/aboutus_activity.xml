@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="15dp"
 
-    tools:context="v.s.p.Aboutus"
+    tools:context="v.s.p.navigation.Aboutus"
     android:background="@drawable/loginback"
     >
 
