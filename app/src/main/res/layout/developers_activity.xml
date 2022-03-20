@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_contactus"
+    android:scrollbars="vertical"
+    tools:context="v.s.p.Activities.activity_Developers">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:backgroundTint="#00009c"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="30dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="Developer"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="20dp"-->
+                <!--                        android:textStyle="bold"-->
+
+                <!--                        />-->
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/vaibhavprofile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:padding="5dp"
+                    android:text="Vaibhav Pallod"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+
+
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:elevation="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/vaibhavcall"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:padding="4dp"
+                        android:background="@drawable/circle"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/callicon" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/vaibhavlinkedin"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/circle"
+                        android:layout_margin="5dp"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/linkedinicon" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/vaibhavgit"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/circle"
+                        android:layout_margin="5dp"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/githubicon" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/vaibhavgmail"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_weight="1"
+                        android:padding="2dp"
+                        android:background="@drawable/circle"
+                        android:layout_margin="5dp"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gmailicon" />
+
+                </LinearLayout>
+
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:onClick="contact2"-->
+                <!--                    android:text="+91 9422668223"-->
+                <!--                    android:textColor="@color/gold"-->
+                <!--                    android:textIsSelectable="true"-->
+                <!--                    android:textSize="20dp"-->
+                <!--                    android:textStyle="italic" />-->
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#00009c"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="30dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp"
+
+                >
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="Developer"-->
+                <!--                        android:textColor="@color/white"-->
+                <!--                        android:textSize="20dp"-->
+
+                <!--                        android:textStyle="bold"-->
+
+                <!--                        />-->
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/tejasprofile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="Tejas Dahad"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="10dp"
+                    android:gravity="center"
+                    android:weightSum="4">
+
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/tejascall"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_margin="5dp"
+                        android:padding="4dp"
+                        android:background="@drawable/circle"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/callicon" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/tejaslinkedin"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@drawable/circle"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/linkedinicon" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/tejasgithub"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@drawable/circle"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/githubicon" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/tejasgmail"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_margin="5dp"
+                        android:padding="2dp"
+                        android:background="@drawable/circle"
+                        android:onClick="call"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gmailicon" />
+
+                </LinearLayout>
+
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:onClick="contact1"-->
+                <!--                    android:text="+91 9850960081"-->
+                <!--                    android:textColor="@color/gold"-->
+                <!--                    android:textIsSelectable="true"-->
+                <!--                    android:textSize="20dp"-->
+                <!--                    android:textStyle="italic" />-->
+
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center|top"-->
+        <!--            android:layout_marginTop="30dp"-->
+        <!--            android:layout_marginBottom="50dp"-->
+        <!--            android:backgroundTint="#00009c"-->
+        <!--            app:cardCornerRadius="10dp"-->
+        <!--            app:cardElevation="30dp">-->
+
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:gravity="center"-->
+        <!--                android:orientation="vertical"-->
+        <!--                android:padding="10dp">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="Contact us at"-->
+        <!--                    android:textColor="@color/white"-->
+        <!--                    android:textSize="20dp" />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="5dp"-->
+        <!--                    android:text="tarane@pict.edu"-->
+        <!--                    android:textColor="@color/gold"-->
+        <!--                    android:textSize="18dp"-->
+
+
+        <!--                    />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="5dp"-->
+        <!--                    android:text="vaibhavpallod@gmail.com"-->
+        <!--                    android:textColor="@color/gold"-->
+        <!--                    android:textSize="18dp"-->
+
+
+        <!--                    />-->
+
+
+        <!--            </LinearLayout>-->
+
+
+        <!--        </androidx.cardview.widget.CardView>-->
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+

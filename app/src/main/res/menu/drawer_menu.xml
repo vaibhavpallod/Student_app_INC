@@ -1,28 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view"
-    >
-<group>
-    <item android:title="Add project"
-        android:id="@+id/runtimeaddproject"
-        android:iconTint="@color/colorAccent"
+    tools:showIn="navigation_view">
 
-        android:icon="@drawable/ic_inclogo"
-        />
+    <group android:id="@+id/vcb">
 
+<!--        <item-->
+<!--            android:id="@+id/allprojects"-->
+<!--            android:icon="@drawable/ic_open_in_browser_black_24dp"-->
+<!--            android:title="All Projects" />-->
 
+        <item
+            android:id="@+id/visitwebsiteid"
+            android:icon="@drawable/ic_open_in_browser_black_24dp"
+            android:title="Visit Website" />
 
-
-
-</group>
-    <item
-
-        android:title="Developed By : Vaibhav Pallod"
-
-        />
+        <item
+            android:id="@+id/sponsor"
+            android:icon="@drawable/ic_msponsor_on_black_24dp"
+            android:title="Sponsors" />
 
 
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="About" />
+
+    </group>
+    <group
+        android:id="@+id/onnn"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/contactud"
+            android:icon="@drawable/ic_contact_us_black_24dp"
+            android:title="Contact Us" />
+
+<!--        <item-->
+<!--            android:id="@+id/reportbugid"-->
+<!--            android:icon="@drawable/ic_baseline_bug_report_24"-->
+<!--            android:title="Report a Bug"-->
+
+<!--            />-->
 
 
+        <item
+            android:id="@+id/developernav"
+            android:icon="@drawable/developersidenav"
+            android:title="Developers" />
+
+        <item
+            android:id="@+id/feedbacknav"
+            android:icon="@drawable/ic_feedback_black_24dp"
+            android:title="Provide Feedback" />
+
+
+        <item
+            android:id="@+id/rateplay"
+            android:icon="@drawable/ic_baseline_rateplaystore_star_24"
+            android:title="Rate us" />
+
+
+        <item
+            android:id="@+id/logoutnav"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+
+
+    </group>
 </menu>

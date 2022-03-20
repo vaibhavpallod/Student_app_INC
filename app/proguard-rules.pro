@@ -18,4 +18,17 @@
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
+#-keepattributes Signature
+#-keepattributes *Annotation*
+-keep class com.firebase.** { *; }
 #-renamesourcefileattribute SourceFile
+#-dontwarn java.nio.file.Files
+#-dontwarn java.nio.file.Path
+#-dontwarn java.nio.file.OpenOption
+#-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+    # This rule will properly ProGuard all the model classes in
+    # the package com.yourcompany.models. Modify to fit the structure
+#    # of your app.
+#    -keepclassmembers class com.yourcompany.models.** {
+#      *;
+#    }

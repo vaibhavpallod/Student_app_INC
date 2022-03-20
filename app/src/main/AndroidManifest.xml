@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.studentappinc">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,18 +13,46 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Add_dynamic_project"></activity>
+        <activity android:name="v.s.p.instruction"/>
+        <activity android:name="v.s.p.navigation.Feedback_form" />
+        <activity android:name="v.s.p.navigation.ContactUs" />
+        <activity android:name="v.s.p.Activities.activity_Developers" />
+
+        <activity android:name="v.s.p.navigation.ReportBug" />
+        <activity android:name="v.s.p.navigation.all_project.Projects"/>
+        <activity android:name="v.s.p.navigation.all_project.Add_dynamic_project"/>
         <activity
-            android:name=".JudgeActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".StudentActivity" />
-        <activity android:name=".LoginActivity">
+            android:name="v.s.p.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="v.s.p.navigation.Aboutus" />
+        <activity android:name="v.s.p.navigation.Sponsor"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+
+        </activity>
+        <activity
+            android:name="v.s.p.SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="v.s.p.Add_marks"
+            android:parentActivityName="v.s.p.Activities.activity_Home">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="v.s.p.Activities.activity_Home" />
+        </activity> <!-- <activity android:name=".Add_dynamic_project" /> -->
+
+        <activity
+            android:name="v.s.p.Activities.activity_Home"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

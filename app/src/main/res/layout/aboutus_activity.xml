@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginback"
+    android:orientation="vertical"
+
+    android:padding="15dp"
+    tools:context="v.s.p.navigation.Aboutus">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        app:cardBackgroundColor="#00000000"
+        app:cardCornerRadius="5dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="9dp"
+
+                >
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/inclogo" />
+                <!--            <TextView-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="About Us"-->
+
+                <!--                android:textAlignment="center"-->
+                <!--                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:textSize="28dp" />-->
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:justificationMode="inter_word"
+                        android:text="Impetus and Concepts (InC) is a flagship technical event of SCTR's Pune Institute of Computer Technology (PICT) Pune, which will be held in during 4th week of March 2022. InC is an intercollegiate International level competition which has been catching the attention of corporate giants for Quality of projects and an opportunity to recruit/mentor young talented budding entrepreneurs. Every year InC sets a New Benchmark and provides an opportunity to students to realize their ideas into effective product. Over the years, it has become most popular &amp; awaited event with continuous improvement in Footfall, Number and Quality of projects/papers, etc. This event also sets a platform for students to design, exhibit and watch their ideas come true. This technical fest has Inventive events namely - Impetus, Concepts, Pradnya.
+Accordingly,Impetus Project Competition (FE to TE students, All Engineering Branches confined to specific Domains,Concepts Projects Competition(Final Year Students,All Engineering Branches confined Specific Domains &amp; Pradnya - International Coding Competition.InC announces a total cash prize of ₹6 Lakhs and a special prize of ₹1 Lakh for Project related to Online Teaching Aids (InC 2022 Theme)"
+                        android:textColor="@color/black"
+                        android:textSize="19dp" />
+                </ScrollView>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

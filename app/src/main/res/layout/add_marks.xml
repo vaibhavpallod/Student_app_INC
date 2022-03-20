@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_stylewithboeder"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="ID"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/projectidaddmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="Project"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+
+            <TextView
+                android:id="@+id/projectnameaddmark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:stretchColumns="1"
+
+                >
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_column="2"
+                        android:text="Max Marks" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Originality, Creativity, Clarity, and Innovation in Project"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext1"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_height="match_parent"
+
+                        android:layout_column="2"
+                        android:width="40dp"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(20)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:width="250dp"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Patent/ Product readiness from Project"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_height="match_parent"
+
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Relevance to Society"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Ability to Execute projects as a Startups/Startup Enrollment"
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+
+                    <EditText
+                        android:id="@+id/edittext4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(10)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Testing/ Demonstration"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(15)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Impact and Applications"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(20)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:width="150dp"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Presentation, and Q &amp; A"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <EditText
+                        android:id="@+id/edittext7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(15)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_column="0"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="Total"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/totaladdmarks"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="3dp"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_column="2"
+                        android:background="@drawable/tableborder2"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:text="(100)"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                </TableRow>
+            </TableLayout>
+
+
+            <Button
+                android:id="@+id/savebtn"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/rounded_button"
+                android:backgroundTint="@color/basilgreendark"
+                android:text="SAVE"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
