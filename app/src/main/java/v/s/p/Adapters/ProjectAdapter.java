@@ -9,14 +9,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.studentappinc.R;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.OnItemClickListener;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.transition.AutoTransition;
-import androidx.transition.TransitionManager;
 import v.s.p.Classes.ProjectClass;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHolder> {
@@ -40,27 +41,42 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final ProjectClass item = projectList.get(position);
+        final ProjectClass citem = projectList.get(position);
 
-        holder.subtitle.setText(item.getTitle());
-        holder.id.setText(item.getId());
-        holder.arrowBtn.setOnClickListener(new View.OnClickListener() {
+        holder.subtitle.setText(citem.getTitle());
+        holder.id.setText(citem.getId());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.arrowBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (holder.expandableView.getVisibility() == View.GONE) {
-                            TransitionManager.beginDelayedTransition(holder.cardView, new AutoTransition());
-                            holder.expandableView.setVisibility(View.VISIBLE);
-                            holder.arrowBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_up_black_24dp);
-                        } else {
-                            TransitionManager.beginDelayedTransition(holder.cardView, new AutoTransition());
-                            holder.expandableView.setVisibility(View.GONE);
-                            holder.arrowBtn.setBackgroundResource(R.drawable.ic_keyboard_arrow_down_black_24dp);
-                        }
-                    }
-                });
+//                DialogPlus dialog = DialogPlus.newDialog(context)
+//                        .setOnItemClickListener(new OnItemClickListener() {
+//                            @Override
+//                            public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
+//                            }
+//                        })
+//                        .setExpanded(true)  // This will enable the expand feature, (similar to android L share dialog)
+//                        .create();
+//                dialog.show();
+
+                DialogPlus dialog = DialogPlus.newDialog(context)
+                        .setExpanded(true)
+                        .setPadding(20, 20, 20, 20)
+                        .setContentHolder(new ViewHolder(R.layout.bottom_sheet))// This will enable the expand feature, (similar to android L share dialog)
+                        .setOnItemClickListener(new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(DialogPlus dialog, Object item, View view, int position) {
+                            }
+                        })
+                        .create();
+
+//                ((TextView) dialog.findViewById(R.id.bid)).setText(citem.getId());
+//                ((TextView) dialog.findViewById(R.id.btitle)).setText(citem.getTitle());
+//                ((TextView) dialog.findViewById(R.id.babs)).setText(citem.getAbstr());
+//                ((TextView) dialog.findViewById(R.id.bname)).setText(citem.getName());
+//                ((TextView) dialog.findViewById(R.id.bmobno)).setText(citem.getMobno());
+
+
+                dialog.show();
             }
         });
     }

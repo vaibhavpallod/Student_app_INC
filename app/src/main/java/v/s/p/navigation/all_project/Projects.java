@@ -14,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +40,6 @@ public class Projects extends AppCompatActivity {
 
     RecyclerView recyclerView;
     public List<ProjectClass> projectList;
-    JudgecustomListAdapter myadapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,6 +96,10 @@ public class Projects extends AppCompatActivity {
 
             }
         });
+
+
+
+
 
 
     }

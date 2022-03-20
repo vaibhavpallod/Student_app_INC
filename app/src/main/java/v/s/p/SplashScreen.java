@@ -1,6 +1,7 @@
 package v.s.p;
 
 import androidx.appcompat.app.AppCompatActivity;
+import v.s.p.Activities.activity_Home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +30,7 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
                 }
                 else {
-                    Intent intent= new Intent(getApplicationContext(), j.class);
+                    Intent intent= new Intent(getApplicationContext(), activity_Home.class);
                     startActivity(intent);
                     finish();
 

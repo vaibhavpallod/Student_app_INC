@@ -2,7 +2,7 @@ package v.s.p.navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import v.s.p.ConnectionDetector;
-import v.s.p.j;
+import v.s.p.Activities.activity_Home;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -69,7 +69,7 @@ public class ReportBug extends AppCompatActivity {
 
 
                     Toast.makeText(getApplicationContext(),"Thank You!",Toast.LENGTH_LONG).show();
-                    Intent intent4 = new Intent(getApplicationContext(), j.class);
+                    Intent intent4 = new Intent(getApplicationContext(), activity_Home.class);
                     startActivity(intent4);
                     finish();
                 }

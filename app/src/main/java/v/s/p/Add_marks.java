@@ -34,10 +34,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import v.s.p.Activities.activity_Home;
 import v.s.p.navigation.Feedback_form;
 
 
-//import static com.example.studentappinc.j.marklist;
+//import static com.example.studentappinc.activity_Home.marklist;
 
 public class Add_marks extends AppCompatActivity {
     String name, id;
@@ -72,13 +73,13 @@ public class Add_marks extends AppCompatActivity {
         myEditText4.setFilters(new InputFilter[]{new MinMaxFilter("0", "10")});
 
         final EditText myEditText5 = (EditText) findViewById(R.id.edittext5);
-        myEditText5.setFilters(new InputFilter[]{new MinMaxFilter("0", "10")});
+        myEditText5.setFilters(new InputFilter[]{new MinMaxFilter("0", "15")});
 
         final EditText myEditText6 = (EditText) findViewById(R.id.edittext6);
         myEditText6.setFilters(new InputFilter[]{new MinMaxFilter("0", "20")});
 
         final EditText myEditText7 = (EditText) findViewById(R.id.edittext7);
-        myEditText7.setFilters(new InputFilter[]{new MinMaxFilter("0", "20")});
+        myEditText7.setFilters(new InputFilter[]{new MinMaxFilter("0", "15")});
 
 
         TextView projectname = findViewById(R.id.projectnameaddmark);
@@ -225,7 +226,7 @@ public class Add_marks extends AppCompatActivity {
                                                 public void onClick(View v) {
 
                                                     if (textView.getText().length() != 0) {
-                                                        Intent intent = new Intent(getApplicationContext(), j.class);
+                                                        Intent intent = new Intent(getApplicationContext(), activity_Home.class);
                                                         intent.putExtra("success", x);
                                                         startActivity(intent);
                                                     } else {
@@ -262,7 +263,7 @@ public class Add_marks extends AppCompatActivity {
                                     mRef1.child(value).child(id).child("Presentation, and Q&A").setValue(myEditText7.getText().toString());
                                     mRef1.child(value).child(id).child("Total").setValue(totaltextview.getText().toString());
 
-                                    Intent intent = new Intent(getApplicationContext(), j.class);
+                                    Intent intent = new Intent(getApplicationContext(), activity_Home.class);
 
                                     startActivity(intent);
                                 }
@@ -273,7 +274,7 @@ public class Add_marks extends AppCompatActivity {
                         // recyclerView.findViewHolderForAdapterPosition(x).itemView.findViewById(R.id.addmarkbtn).setClickable(false);
 
                     } else if (getIntent().getIntExtra("button", 100) == 1)
-                        toast("Fields are Empty");
+                        toast("Kindly assign marks for each point");
                 } else {
                     toast("Please check Internet Connection");
                 }
@@ -626,7 +627,7 @@ public class Add_marks extends AppCompatActivity {
                     mRef1.child(value).child(id).child("Impact and Applications").setValue(0);
                     mRef1.child(value).child(id).child("Presentation, and Q&A").setValue(0);
                     mRef1.child(value).child(id).child("Total").setValue(0);
-                    Intent intent = new Intent(context, j.class);
+                    Intent intent = new Intent(context, activity_Home.class);
                     context.startActivity(intent);
                 }
             }

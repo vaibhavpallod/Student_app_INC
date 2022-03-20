@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="v.s.p.navigation.Sponsor"
+    android:theme="@style/AppTheme.NoActionBar"
+    android:background="@drawable/gradient_sponsor"
     android:orientation="vertical"
-android:background="@drawable/gradient_sponsor"
-    >
+    tools:context="v.s.p.navigation.Sponsor">
 
-    <LinearLayout
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar2"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
-        >
-        <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/Theme.AppCompat"
+        app:title="@string/app_name"
+        app:titleCentered="true"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:titleTextColor="@color/white">
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sponsorrecyclerview"
-            />
+            android:orientation="vertical"
+            android:padding="10dp">
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sponsorrecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

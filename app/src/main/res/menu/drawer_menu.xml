@@ -5,15 +5,15 @@
 
     <group android:id="@+id/vcb">
 
-        <item
-            android:id="@+id/allprojects"
-            android:icon="@drawable/ic_open_in_browser_black_24dp"
-            android:title="All Projects" />
+<!--        <item-->
+<!--            android:id="@+id/allprojects"-->
+<!--            android:icon="@drawable/ic_open_in_browser_black_24dp"-->
+<!--            android:title="All Projects" />-->
 
         <item
             android:id="@+id/visitwebsiteid"
             android:icon="@drawable/ic_open_in_browser_black_24dp"
-            android:title="Visit our Website" />
+            android:title="Visit Website" />
 
         <item
             android:id="@+id/sponsor"
@@ -35,13 +35,18 @@
             android:icon="@drawable/ic_contact_us_black_24dp"
             android:title="Contact Us" />
 
+<!--        <item-->
+<!--            android:id="@+id/reportbugid"-->
+<!--            android:icon="@drawable/ic_baseline_bug_report_24"-->
+<!--            android:title="Report a Bug"-->
+
+<!--            />-->
+
+
         <item
-            android:id="@+id/reportbugid"
-            android:icon="@drawable/ic_baseline_bug_report_24"
-            android:title="Report a Bug"
-
-            />
-
+            android:id="@+id/developernav"
+            android:icon="@drawable/developersidenav"
+            android:title="Developers" />
 
         <item
             android:id="@+id/feedbacknav"
@@ -53,6 +58,13 @@
             android:id="@+id/rateplay"
             android:icon="@drawable/ic_baseline_rateplaystore_star_24"
             android:title="Rate us" />
+
+
+        <item
+            android:id="@+id/logoutnav"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+
 
     </group>
 </menu>

@@ -200,7 +200,7 @@ public class JudgecustomListAdapter extends RecyclerView.Adapter<JudgecustomList
                 cd = new ConnectionDetector(context);
                 if(cd.isConnected()) {
                     Intent intent = new Intent(context.getApplicationContext(), Add_marks.class);
-                    //    intent.putExtra("list",(ArrayList<Integer>)j.marklist);
+                    //    intent.putExtra("list",(ArrayList<Integer>)activity_Home.marklist);
                     intent.putExtra("button", 1);
 
                     intent.putExtra("position", position);
@@ -235,7 +235,7 @@ public class JudgecustomListAdapter extends RecyclerView.Adapter<JudgecustomList
                             Add_marks add_marks = new Add_marks();
                             add_marks.setzero(value, judgeIDreturn.getStudentID(), studentlist.size(), position, context);
                        /* Intent intent = new Intent(context.getApplicationContext(), Add_marks.class);
-                        //    intent.putExtra("list",(ArrayList<Integer>)j.marklist);
+                        //    intent.putExtra("list",(ArrayList<Integer>)activity_Home.marklist);
                         intent.putExtra("button",0);
                         intent.putExtra("position",position);
                         intent.putExtra("size",studentlist.size());

@@ -13,9 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="v.s.p.instruction"></activity>
+        <activity android:name="v.s.p.instruction"/>
         <activity android:name="v.s.p.navigation.Feedback_form" />
         <activity android:name="v.s.p.navigation.ContactUs" />
+        <activity android:name="v.s.p.Activities.activity_Developers" />
+
         <activity android:name="v.s.p.navigation.ReportBug" />
         <activity android:name="v.s.p.navigation.all_project.Projects"/>
         <activity android:name="v.s.p.navigation.all_project.Add_dynamic_project"/>
@@ -23,10 +25,15 @@
             android:name="v.s.p.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="v.s.p.navigation.Aboutus" />
-        <activity android:name="v.s.p.navigation.Sponsor" />
+        <activity android:name="v.s.p.navigation.Sponsor"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+
+        </activity>
         <activity
             android:name="v.s.p.SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,15 +42,16 @@
         </activity>
         <activity
             android:name="v.s.p.Add_marks"
-            android:parentActivityName="v.s.p.j">
+            android:parentActivityName="v.s.p.Activities.activity_Home">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="v.s.p.j" />
+                android:value="v.s.p.Activities.activity_Home" />
         </activity> <!-- <activity android:name=".Add_dynamic_project" /> -->
+
         <activity
-            android:name="v.s.p.j"
+            android:name="v.s.p.Activities.activity_Home"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

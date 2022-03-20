@@ -286,9 +286,9 @@
                         android:background="@drawable/tableborder"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="(10)"
+                        android:text="(15)"
                         android:textColor="@color/black"
-                        android:textSize="16dp" />
+                        android:textSize="18dp" />
 
                 </TableRow>
 
@@ -346,7 +346,7 @@
                         android:background="@drawable/tableborder"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="Presentation And Q &amp; A"
+                        android:text="Presentation, and Q &amp; A"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -367,7 +367,7 @@
                         android:background="@drawable/tableborder"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="(20)"
+                        android:text="(15)"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 
@@ -385,7 +385,7 @@
                         android:background="@drawable/tableborder2"
                         android:gravity="center"
                         android:padding="3dp"
-                        android:text="Total of Individual Staff"
+                        android:text="Total"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
 

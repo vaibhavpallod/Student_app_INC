@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import v.s.p.Activities.activity_Home;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String SHARED_PEFS = "sharedPreds";
@@ -73,7 +74,7 @@ ConnectionDetector cd;
 
                     if (firebaseAuth.getCurrentUser() != null) {
 
-                        //  startActivity(new Intent(LoginActivity.this,j.class));
+                        //  startActivity(new Intent(LoginActivity.this,activity_Home.class));
 
 
                     }
@@ -146,12 +147,8 @@ ConnectionDetector cd;
                                         editor.apply();
                                         DatabaseReference mRefchild = mRef.child("judgeid").child(judgeid);
 
-                                   /* String token = task.getResult().getToken();
-
-                                    mRefchild.child("Token").setValue(token);
-*/
                                         mRefchild.child("ID").setValue(judgeid);
-                                        Intent intent = new Intent(getApplicationContext(), j.class);
+                                        Intent intent = new Intent(getApplicationContext(), activity_Home.class);
                                         startActivity(intent);
                                     }
                                 }

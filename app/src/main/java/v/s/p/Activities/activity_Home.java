@@ -1,4 +1,4 @@
-package v.s.p;
+package v.s.p.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +36,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import v.s.p.Adapters.JudgecustomListAdapter;
+import v.s.p.Calculate;
 import v.s.p.Classes.JudgeIDreturn;
+import v.s.p.LoginActivity;
+import v.s.p.instruction;
 import v.s.p.navigation.Aboutus;
 import v.s.p.navigation.ContactUs;
 import v.s.p.navigation.Feedback_form;
@@ -45,7 +48,7 @@ import v.s.p.navigation.Sponsor;
 import v.s.p.navigation.all_project.Add_dynamic_project;
 
 
-public class j extends AppCompatActivity implements OnNavigationItemSelectedListener {
+public class activity_Home extends AppCompatActivity implements OnNavigationItemSelectedListener {
 
     public static int i;
     private long backPressedTime;
@@ -98,7 +101,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         studentlist = new ArrayList<>();
 
         drawer = findViewById(R.id.judge_drawer_layout);
-        toggle = new ActionBarDrawerToggle(j.this, drawer, mtoolbar, R.string.navigation_darwer_open, R.string.navigation_darwer_close);
+        toggle = new ActionBarDrawerToggle(activity_Home.this, drawer, mtoolbar, R.string.navigation_darwer_open, R.string.navigation_darwer_close);
         toggle.setDrawerIndicatorEnabled(true);
 
         drawer.addDrawerListener(toggle);
@@ -111,7 +114,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         nameheader = view.findViewById(R.id.judgenameheader);
         emailheader = view.findViewById(R.id.judgeemailheader);
 
-        final JudgecustomListAdapter myadapter = new JudgecustomListAdapter(j.this, studentlist);
+        final JudgecustomListAdapter myadapter = new JudgecustomListAdapter(activity_Home.this, studentlist);
 
         result = getSharedPreferences("SaveData", MODE_PRIVATE);
         final String value = result.getString("Value", "Data not Found");
@@ -125,7 +128,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
         mDatabase.child("judgeid").child(value).addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
-                // Toast.makeText(j.this,dataSnapshot.child("name").getValue().toString(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(activity_Home.this,dataSnapshot.child("name").getValue().toString(), Toast.LENGTH_SHORT).show();
                 nameheader.setText(dataSnapshot.child("name").getValue().toString());
                 emailheader.setText(dataSnapshot.child("email").getValue().toString());
             }
@@ -204,7 +207,7 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
 
 
               /*  String id;
-                new AlertDialog.Builder(j.this).setTitle("zero makrs will be assigned ").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(activity_Home.this).setTitle("zero makrs will be assigned ").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         toast("absent button clicked");
@@ -231,20 +234,20 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.signOutMenuId) {
-            FirebaseAuth.getInstance().signOut();
-
-            sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
-            editor = sharedPreferences.edit();
-            editor.putInt("check", 0);
-
-            editor.apply();
-
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        }
+//        if (item.getItemId() == R.id.signOutMenuId) {
+//            FirebaseAuth.getInstance().signOut();
+//
+//            sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
+//            editor = sharedPreferences.edit();
+//            editor.putInt("check", 0);
+//
+//            editor.apply();
+//
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            startActivity(intent);
+//            finish();
+//        }
 
         if (item.getItemId() == R.id.instruction) {
 
@@ -296,10 +299,10 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
 
         switch (item.getItemId()) {
 
-            case R.id.allprojects:
-                Intent intent0 = new Intent(getApplicationContext(), Add_dynamic_project.class);
-                startActivity(intent0);
-                break;
+//            case R.id.allprojects:
+//                Intent intent0 = new Intent(getApplicationContext(), Add_dynamic_project.class);
+//                startActivity(intent0);
+//                break;
 
 
             case R.id.visitwebsiteid:
@@ -322,15 +325,21 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
                 Intent intent3 = new Intent(getApplicationContext(), ContactUs.class);
                 startActivity(intent3);
                 break;
-            case R.id.reportbugid:
-                Intent intent5 = new Intent(getApplicationContext(), ReportBug.class);
-                startActivity(intent5);
+            case R.id.developernav:
+                Intent intentd = new Intent(getApplicationContext(), activity_Developers.class);
+                startActivity(intentd);
                 break;
+//            case R.id.reportbugid:
+//                Intent intent5 = new Intent(getApplicationContext(), ReportBug.class);
+//                startActivity(intent5);
+//                break;
 
 
             case R.id.feedbacknav:
-                Intent intent4 = new Intent(getApplicationContext(), Feedback_form.class);
-                startActivity(intent4);
+                 // https://docs.google.com/forms/d/e/1FAIpQLSfnpguXsDkrd9Z1C8KKk8382Gr9-BMsAPb_BD4_EZ9X27B24w/viewform
+                Uri uri0 = Uri.parse("https://rebrand.ly/incform"); // missing 'http://' will cause crashed
+                Intent intent0 = new Intent(Intent.ACTION_VIEW, uri0);
+                startActivity(intent0);
                 break;
 
             case R.id.rateplay:
@@ -339,6 +348,21 @@ public class j extends AppCompatActivity implements OnNavigationItemSelectedList
                 startActivity(intent6);
                 break;
 
+
+            case R.id.logoutnav:
+                FirebaseAuth.getInstance().signOut();
+
+                sharedPreferences = getSharedPreferences("SaveData", MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                editor.putInt("check", 0);
+
+                editor.apply();
+
+                Intent intent9 = new Intent(this, LoginActivity.class);
+                intent9.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent9);
+                finish();
+                break;
 
         }
         drawer.closeDrawer(GravityCompat.START);

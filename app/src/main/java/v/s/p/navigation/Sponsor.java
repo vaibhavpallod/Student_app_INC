@@ -1,13 +1,19 @@
 package v.s.p.navigation;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import v.s.p.Sponsoradapter;
 import v.s.p.Sponsorreturn;
 
 import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.example.studentappinc.R;
@@ -25,23 +31,43 @@ public class Sponsor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sponsors_mainactivity);
 
+        Toolbar toolbar = findViewById(R.id.toolbar2);
+        toolbar.setTitle("SPONSORS");
+        Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.arrow_left_back, null);
+        drawable = DrawableCompat.wrap(drawable);
+        DrawableCompat.setTint(drawable, Color.WHITE);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("SPONSORS");
+        toolbar.setNavigationIcon(drawable);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setBackgroundColor(Color.parseColor("#06023b"));
+
+        setSupportActionBar(toolbar);
+
+//        getActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setTitle("SPONSORS");
+
+//        getWindow().setTitleColor(getResources().getColor(R.color.white));
+
+//        getSupportActionBar().set;//.getCustomView().setBackgroundColor(getResources().getColor(R.color.white));
+//        getActionBar().getThemedContext().setTheme(R.style.TitleTextStyle);
 
 
-getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#06023b")));
+//getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#06023b")));
         Sponsorreturn[] sponsorreturn = new Sponsorreturn[]{
-                new Sponsorreturn("SPONSOR",R.drawable.sponsormicrosoft),
-                new Sponsorreturn("SPONSOR",R.drawable.sponsoreqtech),
-                new Sponsorreturn("SPONSOR",R.drawable.sponsorcakesoft),
-                new Sponsorreturn("SPONSOR",R.drawable.sponsorspriq),
-                new Sponsorreturn("SPONSOR",R.drawable.sponsorsag),
-                new Sponsorreturn("OTHER SPONSOR",R.drawable.sponsorcsi),
-                new Sponsorreturn("OTHER SPONSOR",R.drawable.sponsoraccm),
-                new Sponsorreturn("OTHER SPONSOR",R.drawable.sponsorieee)
+                new Sponsorreturn("Title Sponsor",R.drawable.sponsor_imocha),
+                new Sponsorreturn("Co-Sponsor",R.drawable.sponsor_bajaj),
+                new Sponsorreturn("Co-Sponsor",R.drawable.sponsor_airavana),
+                new Sponsorreturn("Concepts Sponsor",R.drawable.sponsor_eq_logo_transparent),
+                new Sponsorreturn("Concepts Sponsor",R.drawable.sponsor_eqube),
+                new Sponsorreturn("Pradnya Sponsor",R.drawable.sponsor_veritas),
+                new Sponsorreturn("Other Sponsor",R.drawable.sponsor_algoanalytics),
+                new Sponsorreturn("Other Sponsor",R.drawable.sponsor_ieeepunesectionlogo),
+                new Sponsorreturn("Other Sponsor",R.drawable.sponsor_pasc),
+                new Sponsorreturn("Other Sponsor",R.drawable.sponsor_pcsb),
+                new Sponsorreturn("Online Media Partner",R.drawable.sponsor_collegedunia),
 
 
 };
